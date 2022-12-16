@@ -8,8 +8,13 @@ import profilePic4 from '../../img/profile4.jpg';
 import { Pagination } from 'swiper';
 import 'swiper/css/pagination';
 import 'swiper/css';
+import { themeContext } from '../../Context';
+import { useContext } from 'react';
 
 const Testimonials = () => {
+  const theme = useContext(themeContext);
+  const darkMode = theme.state.darkMode;
+  
   const clients = [
     { img: profilePic1,
       review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores autem consectetur eos voluptates dolor accusamus repellendus laboriosam fuga necessitatibus suscipit"
@@ -46,7 +51,7 @@ const Testimonials = () => {
             <SwiperSlide key={index}>
               <div className="testimonial">
               <img src={client.img} alt="" />
-              <span>{client.review}</span>
+              <span style={{color: darkMode ? 'white' : ''}}>{client.review}</span>
               </div>
             </SwiperSlide>
           )
